@@ -3,10 +3,11 @@ console.log('js');
 $(document).ready(function () {
     $('#submit').on('click', addEmployee);
     $('#submit').on('click', newEEToTable);
-    $('.results').on('click', 'li', removeLine)
+    $('#empTable').on('click', 'tr', removeLine)
 });
 
 function removeLine () {
+    console.log(this);
     $(this).remove();
 }
 
@@ -39,7 +40,7 @@ function addEmployee() {
 function newEEToTable() {
     $('.bodyEETable').empty();
     for (employee of staff){
-        $('.bodyEETable').append('<tr><td>' + employee.firstName + '</td><td>' + employee.lastName + '</td><td>' + employee.empID + '</td><td>' + employee.empTitle + '</td><td>' + employee.empSalary + '</td></tr>')
+        $('.bodyEETable').append('<tr class="emp"><td>' + employee.firstName + '</td><td>' + employee.lastName + '</td><td>' + employee.empID + '</td><td>' + employee.empTitle + '</td><td>' + employee.empSalary + '</td></tr>')
     };
 }
 
