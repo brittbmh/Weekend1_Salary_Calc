@@ -2,6 +2,7 @@ console.log('js');
 
 $(document).ready(function () {
     $('#submit').on('click', addEmployee);
+    $('#submit').on('click', newEEToTable);
     $('.results').on('click', 'li', removeLine)
 });
 
@@ -9,20 +10,20 @@ function removeLine () {
     $(this).remove();
 }
 
-let totalMoSal = 0;
+let monthSal = 0;
 
 
 // add Employees to Array and Calculate Monthly Salary
 function addEmployee() {
     let firstName = $('#firstNameEE').val();
-    console.log(firstName);
+    // console.log(firstName);
     let lastName = $('#lastNameEE').val();
-    let fullName = firstName + ' ' + lastName;
+    // let fullName = firstName + ' ' + lastName;
     let empID = $('#identEE').val();
     let empTitle = $('#titleEE').val();
     let empSalary = parseFloat($('#salaryEE').val());
-    totalMoSal = (empSalary / 12 + totalMoSal);
-    totalMoSal = totalMoSal.toFixed(2);
+    monthSal = (empSalary / 12 + monthSal);
+    let totalMoSal = monthSal.toFixed(2);
     empSalary = empSalary.toFixed(2);
     // $('.results').append('<li>' + fullName + '; ' + empID + '; ' + empTitle + '; $' + empSalary + '</li>');
     $('.totalSal').html('Total Monthly Salary: $' + totalMoSal);
@@ -32,6 +33,14 @@ function addEmployee() {
     $('.inputEE').val('');
     let newEE = new Employee(firstName, lastName, empID, empTitle, empSalary);
     staff.push(newEE);
+    
+}
+
+function newEEToTable() {
+    $('.bodyEETable').empty();
+    for (employee of staff){
+        $('.bodyEETable').append('<tr><td>' + employee.firstName + '</td><td>' + employee.lastName + '</td><td>' + employee.empID + '</td><td>' + employee.empTitle + '</td><td>' + employee.empSalary + '</td></tr>')
+    };
 }
 
 let staff = [];
