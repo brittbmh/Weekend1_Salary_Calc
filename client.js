@@ -11,6 +11,8 @@ function removeLine () {
 
 let totalMoSal = 0;
 
+
+// add Employees to Array and Calculate Monthly Salary
 function addEmployee() {
     let firstName = $('#firstNameEE').val();
     console.log(firstName);
@@ -20,13 +22,27 @@ function addEmployee() {
     let empTitle = $('#titleEE').val();
     let empSalary = parseFloat($('#salaryEE').val());
     totalMoSal = (empSalary / 12 + totalMoSal);
-    let newTotal = totalMoSal.toLocaleString();
-    empSalary = empSalary.toLocaleString();
-    $('.results').append('<li>' + fullName + '; ' + empID + '; ' + empTitle + '; $' + empSalary + '</li>');
-    $('.totalSal').html('Total Monthly Salary: $' + newTotal);
+    totalMoSal = totalMoSal.toFixed(2);
+    empSalary = empSalary.toFixed(2);
+    // $('.results').append('<li>' + fullName + '; ' + empID + '; ' + empTitle + '; $' + empSalary + '</li>');
+    $('.totalSal').html('Total Monthly Salary: $' + totalMoSal);
     if (totalMoSal > 20000){
         $('.totalSal').css('color', 'red');
     }
     $('.inputEE').val('');
+    let newEE = new Employee(firstName, lastName, empID, empTitle, empSalary);
+    staff.push(newEE);
 }
+
+let staff = [];
+
+class Employee {
+    constructor (firstNameIn, lastNameIn, empIDIn, empTitleIn, empSalaryIn) {
+        this.firstName = firstNameIn;
+        this.lastName = lastNameIn;
+        this.empID = empIDIn;
+        this.empTitle = empTitleIn;
+        this.empSalary = empSalaryIn;
+    }
+};
 
