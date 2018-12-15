@@ -20,9 +20,9 @@ function addEmployee() {
     let empTitle = $('#titleEE').val();
     let empSalary = parseFloat($('#salaryEE').val());
     totalMoSal = (empSalary / 12 + totalMoSal);
-    let newTotal = totalMoSal.toFixed(2);
+    let newTotal = totalMoSal.toLocaleString();
     empSalary = empSalary.toLocaleString();
-    $('.results').append('<li>' + fullName + '; ' + empID + '; ' + empTitle + '; ' + empSalary + '</li>');
+    $('.results').append('<li>' + fullName + '; ' + empID + '; ' + empTitle + '; $' + empSalary + '</li>');
     $('.totalSal').html('Total Monthly Salary: $' + newTotal);
     if (totalMoSal > 20000){
         $('.totalSal').css('color', 'red');
