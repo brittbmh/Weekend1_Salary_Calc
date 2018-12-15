@@ -40,7 +40,7 @@ function addEmployee() {
 function newEEToTable() {
     $('.bodyEETable').empty();
     for (employee of staff){
-        $('.bodyEETable').append('<tr class="emp"><td>' + employee.firstName + '</td><td>' + employee.lastName + '</td><td>' + employee.empID + '</td><td>' + employee.empTitle + '</td><td>' + employee.empSalary + '</td></tr>')
+        $('.bodyEETable').append('<tr class="emp"><td>' + employee.firstName + '</td><td>' + employee.lastName + '</td><td>' + employee.empID + '</td><td>' + employee.empTitle + '</td><td>$' + employee.empSalary + '</td></tr>')
     };
 }
 
