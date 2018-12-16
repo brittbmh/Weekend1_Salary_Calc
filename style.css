@@ -21,3 +21,11 @@ main {
 h3 {
     margin-top: 10px;
 }
+
+thead {
+    background-color: lightsteelblue;
+}
+
+.totalSal {
+    font-size: 22px;
+}
