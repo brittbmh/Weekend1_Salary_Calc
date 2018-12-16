@@ -8,7 +8,12 @@ $(document).ready(function () {
 
 function removeLine () {
     console.log(this);
+    let salaryToSub = ($('#salary').text());
+    salaryToSub = parseFloat(salaryToSub);
+    monthSal -= (salaryToSub / 12);
+    monthSal = monthSal.toFixed(2);
     $(this).remove();
+    $('.totalSal').html('Total Monthly Salary: $' + monthSal);
 }
 
 let monthSal = 0;
@@ -40,7 +45,7 @@ function addEmployee() {
 function newEEToTable() {
     $('.bodyEETable').empty();
     for (employee of staff){
-        $('.bodyEETable').append('<tr class="emp"><td>' + employee.firstName + '</td><td>' + employee.lastName + '</td><td>' + employee.empID + '</td><td>' + employee.empTitle + '</td><td>$' + employee.empSalary + '</td></tr>')
+        $('.bodyEETable').append('<tr class="emp"><td>' + employee.firstName + '</td><td>' + employee.lastName + '</td><td>' + employee.empID + '</td><td>' + employee.empTitle + '</td><td id="salary">' + employee.empSalary + '</td></tr>')
     };
 }
 
