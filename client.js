@@ -17,6 +17,8 @@ function removeLine () {
 }
 
 let monthSal = 0;
+// use const to give a label to items that otherwise seem random, and that you don't want changed within code
+const maxMonthlySalary = 20000;
 
 
 // add Employees to Array and Calculate Monthly Salary
@@ -33,19 +35,26 @@ function addEmployee() {
     empSalary = empSalary.toFixed(2);
     // $('.results').append('<li>' + fullName + '; ' + empID + '; ' + empTitle + '; $' + empSalary + '</li>');
     $('.totalSal').html('Total Monthly Salary: $' + totalMoSal);
-    if (totalMoSal > 20000){
+
+    // move this next part to it's own function so that the remove function can use it too
+    if (totalMoSal > maxMonthlySalary){
         $('.totalSal').css('color', 'red');
-    }
+    } // add else to return to black
+
     $('.inputEE').val('');
     let newEE = new Employee(firstName, lastName, empID, empTitle, empSalary);
     staff.push(newEE);
     
 }
 
+
+
 function newEEToTable() {
     $('.bodyEETable').empty();
     for (employee of staff){
-        $('.bodyEETable').append('<tr class="emp"><td>' + employee.firstName + '</td><td>' + employee.lastName + '</td><td>' + employee.empID + '</td><td>' + employee.empTitle + '</td><td id="salary">' + employee.empSalary + '</td></tr>')
+        //can make a simpler version of this as a method in the class to replace long ass string)
+        // $('.bodyEETable').append('<tr class="emp"><td>' + employee.firstName + '</td><td>' + employee.lastName + '</td><td>' + employee.empID + '</td><td>' + employee.empTitle + '</td><td id="salary">' + employee.empSalary + '</td></tr>')
+        $('.bodyEETable').append(employee.toTable())
     };
 }
 
@@ -58,6 +67,16 @@ class Employee {
         this.empID = empIDIn;
         this.empTitle = empTitleIn;
         this.empSalary = empSalaryIn;
+    }
+
+    toTable() {
+        $('.bodyEETable').append(`<tr class="emp">
+                                    <td>${this.firstName}</td>
+                                    <td>${this.lastName}</td>
+                                    <td>${this.empID}</td>
+                                    <td>${this.empTitle}</td>
+                                    <td id="salary">${this.empSalary}</td>
+                                </tr>`)  //yeah backtics
     }
 };
 
