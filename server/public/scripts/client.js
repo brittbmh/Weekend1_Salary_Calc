@@ -76,7 +76,7 @@ class Employee {
                                     <td>${this.empID}</td>
                                     <td>${this.empTitle}</td>
                                     <td id="salary">${this.empSalary}</td>
-                                </tr>`)  //yeah backtics
+                                </tr>`)  //yay backtics
     }
 };
 
